@@ -6,6 +6,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_score
 from utils import status_calc
 
+KEYSTATS_FILE = "../data/keystats.csv"
+FORWARDSAMPLE_FILE = "../data/forward_sample.csv"
 
 def backtest():
     """
@@ -17,7 +19,7 @@ def backtest():
     good results, so the results here should not encourage you to live trade.
     """
     # Build the dataset, and drop any rows with missing values
-    data_df = pd.read_csv("keystats.csv", index_col="Date")
+    data_df = pd.read_csv(KEYSTATS_FILE, index_col="Date")
     data_df.dropna(axis=0, how="any", inplace=True)
 
     features = data_df.columns[6:]
