@@ -220,8 +220,3 @@ def parse_keystats(sp500_df, stock_df):
     df.dropna(axis=0, subset=["Price", "stock_p_change"], inplace=True)
     # Output the CSV
     df.to_csv("keystats.csv", index=False)
-
-
-if __name__ == "__main__":
-    sp500_df, stock_df = preprocess_price_data()
-    parse_keystats(sp500_df, stock_df)

@@ -1,12 +1,62 @@
 import os
-from pandas_datareader import data as pdr
 import pandas as pd
-import fix_yahoo_finance as yf
 
-yf.pdr_override()
+START_DATE = ""
+END_DATE = ""
 
-START_DATE = "2003-08-01"
-END_DATE = "2015-01-01"
+class DatabaseBuilder:
+    features = [
+        # Valuation measures
+        "Market Cap",
+        "Enterprise Value",
+        "Trailing P/E",
+        "Forward P/E",
+        "PEG Ratio",
+        "Price/Sales",
+        "Price/Book",
+        "Enterprise Value/Revenue",
+        "Enterprise Value/EBITDA",
+        # Financials
+        "Profit Margin",
+        "Operating Margin",
+        "Return on Assets",
+        "Return on Equity",
+        "Revenue",
+        "Revenue Per Share",
+        "Quarterly Revenue Growth",
+        "Gross Profit",
+        "EBITDA",
+        "Net Income Avi to Common",
+        "Diluted EPS",
+        "Quarterly Earnings Growth",
+        "Total Cash",
+        "Total Cash Per Share",
+        "Total Debt",
+        "Total Debt/Equity",
+        "Current Ratio",
+        "Book Value Per Share",
+        "Operating Cash Flow",
+        "Levered Free Cash Flow",
+        # Trading information
+        "Beta",
+        "50-Day Moving Average",
+        "200-Day Moving Average",
+        "Avg Vol (3 month)",
+        "Shares Outstanding",
+        "Float",
+        "% Held by Insiders",
+        "% Held by Institutions",
+        "Shares Short",
+        "Short Ratio",
+        "Short % of Float",
+        "Shares Short (prior month",
+    ]
+
+    def __init__(self):
+        pass
+
+    def buildDatabase(self):
+        pass
 
 
 def build_stock_dataset(start=START_DATE, end=END_DATE):
@@ -77,8 +127,3 @@ def build_dataset_iteratively(
         adj_close = stock_ohlc["Adj Close"].rename(ticker)
         df = pd.concat([df, adj_close], axis=1)
     df.to_csv("stock_prices.csv")
-
-
-if __name__ == "__main__":
-    build_stock_dataset()
-    build_sp500_dataset()

@@ -55,8 +55,3 @@ def predict_stocks():
         )
         print(" ".join(invest_list))
         return invest_list
-
-
-if __name__ == "__main__":
-    print("Building dataset and predicting stocks...")
-    predict_stocks()
